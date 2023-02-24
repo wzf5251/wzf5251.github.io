@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Linux常用命令</title>
-    <url>/posts/d0edc1ed/</url>
-    <content><![CDATA[<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> usr <span class="comment">#切换到usr目录下</span></span><br><span class="line"><span class="built_in">cd</span>.. <span class="comment">#切换到上一层目录</span></span><br><span class="line"><span class="built_in">cd</span>/ <span class="comment">#切换到根目录</span></span><br><span class="line"><span class="built_in">cd</span>~ <span class="comment">#切换到用户主目录</span></span><br><span class="line">ll <span class="comment">#查看目录信息</span></span><br><span class="line"><span class="built_in">touch</span> <span class="comment">#创建文件夹</span></span><br><span class="line"><span class="built_in">tail</span> -f <span class="comment">#动态查看日志</span></span><br><span class="line">tar -zcvf <span class="comment">#打包压缩</span></span><br><span class="line">tar -xvf <span class="comment">#解压缩</span></span><br><span class="line"><span class="built_in">ls</span> -l <span class="comment">#查看某个目录下文件或目录的权限</span></span><br><span class="line">ps -ef/ps -aux <span class="comment">#查看正在运行的进程</span></span><br><span class="line"><span class="built_in">kill</span> -9 进程的pid <span class="comment">#杀死进程</span></span><br><span class="line">netstat -an <span class="comment">#查看当前系统的端口使用情况</span></span><br><span class="line">ifconfig <span class="comment">#查看当前系统的网卡信息</span></span><br><span class="line">shoutdown <span class="comment">#关机</span></span><br><span class="line">reboot <span class="comment">#重启</span></span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>]]></content>
-      <tags>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java开发工具类</title>
     <url>/posts/3a8c70dd/</url>
     <content><![CDATA[<h6 id="1、MD5加密工具类"><a href="#1、MD5加密工具类" class="headerlink" title="1、MD5加密工具类"></a>1、MD5加密工具类</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.security.MessageDigest;</span><br><span class="line"><span class="keyword">import</span> java.security.NoSuchAlgorithmException;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">MD5</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">encrypt</span><span class="params">(String strSrc)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">char</span> hexChars[] = &#123; <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>, <span class="string">&#x27;4&#x27;</span>, <span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;6&#x27;</span>, <span class="string">&#x27;7&#x27;</span>, <span class="string">&#x27;8&#x27;</span>,</span><br><span class="line">                    <span class="string">&#x27;9&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;f&#x27;</span> &#125;;</span><br><span class="line">            <span class="type">byte</span>[] bytes = strSrc.getBytes();</span><br><span class="line">            <span class="type">MessageDigest</span> <span class="variable">md</span> <span class="operator">=</span> MessageDigest.getInstance(<span class="string">&quot;MD5&quot;</span>);</span><br><span class="line">            md.update(bytes);</span><br><span class="line">            bytes = md.digest();</span><br><span class="line">            <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> bytes.length;</span><br><span class="line">            <span class="type">char</span>[] chars = <span class="keyword">new</span> <span class="title class_">char</span>[j * <span class="number">2</span>];</span><br><span class="line">            <span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; bytes.length; i++) &#123;</span><br><span class="line">                <span class="type">byte</span> <span class="variable">b</span> <span class="operator">=</span> bytes[i];</span><br><span class="line">                chars[k++] = hexChars[b &gt;&gt;&gt; <span class="number">4</span> &amp; <span class="number">0xf</span>];</span><br><span class="line">                chars[k++] = hexChars[b &amp; <span class="number">0xf</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">String</span>(chars);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (NoSuchAlgorithmException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(<span class="string">&quot;MD5加密出错！！+&quot;</span> + e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -54,6 +44,16 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Linux常用命令</title>
+    <url>/posts/d0edc1ed/</url>
+    <content><![CDATA[<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> usr <span class="comment">#切换到usr目录下</span></span><br><span class="line"><span class="built_in">cd</span>.. <span class="comment">#切换到上一层目录</span></span><br><span class="line"><span class="built_in">cd</span>/ <span class="comment">#切换到根目录</span></span><br><span class="line"><span class="built_in">cd</span>~ <span class="comment">#切换到用户主目录</span></span><br><span class="line">ll <span class="comment">#查看目录信息</span></span><br><span class="line"><span class="built_in">touch</span> <span class="comment">#创建文件夹</span></span><br><span class="line"><span class="built_in">tail</span> -f <span class="comment">#动态查看日志</span></span><br><span class="line">tar -zcvf <span class="comment">#打包压缩</span></span><br><span class="line">tar -xvf <span class="comment">#解压缩</span></span><br><span class="line"><span class="built_in">ls</span> -l <span class="comment">#查看某个目录下文件或目录的权限</span></span><br><span class="line">ps -ef/ps -aux <span class="comment">#查看正在运行的进程</span></span><br><span class="line"><span class="built_in">kill</span> -9 进程的pid <span class="comment">#杀死进程</span></span><br><span class="line">netstat -an <span class="comment">#查看当前系统的端口使用情况</span></span><br><span class="line">ifconfig <span class="comment">#查看当前系统的网卡信息</span></span><br><span class="line">shoutdown <span class="comment">#关机</span></span><br><span class="line">reboot <span class="comment">#重启</span></span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>]]></content>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MySQL相关</title>
     <url>/posts/e31b1d8d/</url>
     <content><![CDATA[<h5 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h5><span id="more"></span>
@@ -84,6 +84,14 @@
       </tags>
   </entry>
   <entry>
+    <title>chenge-first-blog</title>
+    <url>/posts/4c3bfe5e/</url>
+    <content><![CDATA[<p>大家好，我是瑾宸~~~<br>练习使用gitHub搭建博客</p>
+<span id="more"></span>
+
+]]></content>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/posts/4a17b156/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -104,12 +112,16 @@
 ]]></content>
   </entry>
   <entry>
-    <title>chenge-first-blog</title>
-    <url>/posts/4c3bfe5e/</url>
-    <content><![CDATA[<p>大家好，我是瑾宸~~~<br>练习使用gitHub搭建博客</p>
+    <title>开发常用网站</title>
+    <url>/posts/4196d54/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mybatis:  https://mybatis.org/mybatis-3/index.html</span><br><span class="line">maven仓库：    https://mvnrepository.com/</span><br><span class="line">程序员导航：   https://www.cxy521.com/</span><br><span class="line">bootcss网站：    https://v3.bootcss.com/</span><br><span class="line">前端element：   https://element.eleme.cn/#/zh-CN</span><br><span class="line">mybatis-plus:    https://baomidou.com/</span><br><span class="line">jquery:    https://jquery.com/</span><br><span class="line">npm:   https://www.npmjs.com/</span><br><span class="line">rabbitMQ:    https://www.rabbitmq.com/</span><br><span class="line">jquery:    https://jquery.com/</span><br><span class="line">前端echarts：   https://echarts.apache.org/zh/index.html</span><br><span class="line">sdk社区：    https://www.sdk.cn/</span><br><span class="line">在线图库：    https://wallhaven.cc/</span><br><span class="line">系统镜像和工具网站：    https://msdn.itellyou.cn/</span><br><span class="line">gradle包：  https://services.gradle.org/distributions/</span><br><span class="line">软仓：   https://www.ruancang.net/#/sim?page=0&amp;id=7&amp;_=1673063763053</span><br><span class="line">奇迹秀工具箱：    https://www.qijishow.com/down/index.html</span><br><span class="line">hexo网站搭建：   https://hexo.io/zh-cn/</span><br><span class="line">获取虚拟手机短信注册国外软件用：   https://sms-activate.org/getNumber#</span><br></pre></td></tr></table></figure>
+
 <span id="more"></span>
 
 ]]></content>
+      <tags>
+        <tag>实用网站</tag>
+      </tags>
   </entry>
   <entry>
     <title>网络是怎样连接的阅读笔记</title>
@@ -137,6 +149,16 @@
 
 <p>HTTP中主要的头字段</p>
 <p><img src="https://res.weread.qq.com/wrepub/epub_907755_41" alt="&quot;http头&quot;"></p>
+<p>​	响应状态码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1xx:  告知请求的处理进度和情况</span><br><span class="line">2xx： 成功</span><br><span class="line">3xx： 表示需要进一步操作</span><br><span class="line">4xx： 客户端错误</span><br><span class="line">5xx： 服务器错误</span><br></pre></td></tr></table></figure>
+
+<p>​	一条请求消息中只能写1个URI如果需要获取多个文件，必须堆每一个文件单独发送一条请求</p>
+<h5 id="1-2向DNS服务器查询Web服务器的IP地址"><a href="#1-2向DNS服务器查询Web服务器的IP地址" class="headerlink" title="1.2向DNS服务器查询Web服务器的IP地址"></a>1.2向DNS服务器查询Web服务器的IP地址</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">路由器：一种对包进行转发的设备</span><br><span class="line">集线器：转发包，分为中继式和交换式</span><br><span class="line">IP地址必须保证唯一，否则网络会发生故障</span><br><span class="line">数据都是以包的形式传送的</span><br><span class="line">IP地址的主机号：</span><br><span class="line">	全是0：表示整个子网</span><br><span class="line">	全是1：表示向子网上所有的设备发送包，即“广播”</span><br><span class="line">DNS：域名服务系统，将服务器名称和IP地址关联</span><br><span class="line">Socket库：是用于掉哟哦给你网络功能的程序组件集合</span><br><span class="line">根据域名查询IP地址时，浏览器会使用Socket库中的解析器。</span><br><span class="line">协议栈：操作系统内部的网络控制软件，也叫做&quot;协议驱动&quot;，&quot;TCP/IP驱动&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
 <p>注：图片均来源与微信阅读《网路是怎样连接的》</p>
 ]]></content>
       <tags>
@@ -150,17 +172,5 @@
 <span id="more"></span>
 
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1、首先要选择准备支持的支付方式（微信、支付宝......）</span><br><span class="line">2、选择好支付方式后要考虑用户是否会重复下单：</span><br><span class="line">	例如用户利用浏览器的回退功能再次下单：</span><br><span class="line">		可以生成一个流水号，将流水号存在Redis中以用户的id为key ，流水号作为value，同时将生成的流水号从页面当作参数传给下单的接口，下单接口拿着流水号去redis里面比较，如果一样那么就下单，如果不一样就不能下单，当用户下单后就将redis里面的流水号删除，当用户回退浏览器再次下单也不会比对成功。</span><br><span class="line">3、要考虑之前的商品价格是否变动：</span><br><span class="line">	如果价格发生了改变提示用户价格改变重新选择，它检查价格的时候发现改变会即时将新价格更新到购物车缓存中，所以提示用户重新选择就可以。</span><br><span class="line">4、要考虑商品库存问题：</span><br><span class="line">	当库存不足的时候提示商品库存不足。</span><br><span class="line">5、当这些都没有问题的时候，保存订单信息，生成一个订单交易编号采用随机字符串+时间戳+随机数</span><br><span class="line">6、需要考虑订单未支付时的有效时间：利用MQ发送延时消息</span><br><span class="line">7、使用支付宝支付：</span><br><span class="line">	需要创建一个AlipayClient对象根据支付宝的开发文档来操作就可以</span><br><span class="line">8、支付信息表需要有的数据：</span><br><span class="line">	订单ID、用户ID、订单交易编号、支付宝交易号、支付类型、支付金额、支付状态、回调时间、回调内容</span><br><span class="line">	这个表的作用就是用来记账，看支付宝收了多少钱，防止后续的一系列问题</span><br><span class="line">9、当调用支付宝接口的时候会返回一个支付页面</span><br><span class="line">10、提供的同步回调一般是用来给用户看的让用户知道支付成功了</span><br><span class="line">11、异步回调是为了调用自己的平台接口通知支付结果，修改自己系统中表的信息</span><br></pre></td></tr></table></figure>]]></content>
-  </entry>
-  <entry>
-    <title>开发常用网站</title>
-    <url>/posts/4196d54/</url>
-    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mybatis:  https://mybatis.org/mybatis-3/index.html</span><br><span class="line">maven仓库：    https://mvnrepository.com/</span><br><span class="line">程序员导航：   https://www.cxy521.com/</span><br><span class="line">bootcss网站：    https://v3.bootcss.com/</span><br><span class="line">前端element：   https://element.eleme.cn/#/zh-CN</span><br><span class="line">mybatis-plus:    https://baomidou.com/</span><br><span class="line">jquery:    https://jquery.com/</span><br><span class="line">npm:   https://www.npmjs.com/</span><br><span class="line">rabbitMQ:    https://www.rabbitmq.com/</span><br><span class="line">jquery:    https://jquery.com/</span><br><span class="line">前端echarts：   https://echarts.apache.org/zh/index.html</span><br><span class="line">sdk社区：    https://www.sdk.cn/</span><br><span class="line">在线图库：    https://wallhaven.cc/</span><br><span class="line">系统镜像和工具网站：    https://msdn.itellyou.cn/</span><br><span class="line">gradle包：  https://services.gradle.org/distributions/</span><br><span class="line">软仓：   https://www.ruancang.net/#/sim?page=0&amp;id=7&amp;_=1673063763053</span><br><span class="line">奇迹秀工具箱：    https://www.qijishow.com/down/index.html</span><br><span class="line">hexo网站搭建：   https://hexo.io/zh-cn/</span><br><span class="line">获取虚拟手机短信注册国外软件用：   https://sms-activate.org/getNumber#</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-]]></content>
-      <tags>
-        <tag>实用网站</tag>
-      </tags>
   </entry>
 </search>
