@@ -19,5 +19,5 @@ http://example.com/
 http://example.com/tags/linux/
 http://example.com/tags/MySQL/
 http://example.com/tags/Redis/
-http://example.com/tags/%E5%AE%9E%E7%94%A8%E7%BD%91%E7%AB%99/
 http://example.com/tags/%E9%98%85%E8%AF%BB/
+http://example.com/tags/%E5%AE%9E%E7%94%A8%E7%BD%91%E7%AB%99/
