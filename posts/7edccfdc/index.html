@@ -22,20 +22,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="12345678910111213141516cd usr #切换到usr目录下cd.. #切换到上一层目录cd&#x2F; #切换到根目录cd~ #切换到用户主目录ll #查看目录信息touch #创建文件夹tail -f #动态查看日志tar -zcvf #打包压缩tar -xvf #解压缩ls -l #查看某个目录下文件或目录的权限ps -ef&#x2F;ps -aux #查看正在运行的进程kill -9 进程">
+  <meta name="description" content="Nginx的功能：动静分离、反向代理、负载均衡">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux常用命令">
-<meta property="og:url" content="http://example.com/posts/d0edc1ed/index.html">
+<meta property="og:title" content="nginx相关">
+<meta property="og:url" content="http://example.com/posts/7edccfdc/index.html">
 <meta property="og:site_name" content="瑾宸">
-<meta property="og:description" content="12345678910111213141516cd usr #切换到usr目录下cd.. #切换到上一层目录cd&#x2F; #切换到根目录cd~ #切换到用户主目录ll #查看目录信息touch #创建文件夹tail -f #动态查看日志tar -zcvf #打包压缩tar -xvf #解压缩ls -l #查看某个目录下文件或目录的权限ps -ef&#x2F;ps -aux #查看正在运行的进程kill -9 进程">
+<meta property="og:description" content="Nginx的功能：动静分离、反向代理、负载均衡">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-02-20T02:41:41.000Z">
-<meta property="article:modified_time" content="2023-02-21T09:55:26.705Z">
+<meta property="article:published_time" content="2023-03-04T05:34:47.000Z">
+<meta property="article:modified_time" content="2023-03-04T06:05:53.760Z">
 <meta property="article:author" content="w zf">
-<meta property="article:tag" content="linux">
+<meta property="article:tag" content="nginx">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/posts/d0edc1ed/">
+<link rel="canonical" href="http://example.com/posts/7edccfdc/">
 
 
 <script id="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>Linux常用命令 | 瑾宸</title>
+  <title>nginx相关 | 瑾宸</title>
   
 
 
@@ -207,7 +207,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/posts/d0edc1ed/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/7edccfdc/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -220,7 +220,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Linux常用命令
+          nginx相关
         </h1>
 
         <div class="post-meta">
@@ -229,16 +229,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2023-02-20 10:41:41" itemprop="dateCreated datePublished" datetime="2023-02-20T10:41:41+08:00">2023-02-20</time>
+              <time title="创建时间：2023-03-04 13:34:47 / 修改时间：14:05:53" itemprop="dateCreated datePublished" datetime="2023-03-04T13:34:47+08:00">2023-03-04</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-02-21 17:55:26" itemprop="dateModified" datetime="2023-02-21T17:55:26+08:00">2023-02-21</time>
-              </span>
 
           
 
@@ -251,9 +245,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> usr <span class="comment">#切换到usr目录下</span></span><br><span class="line"><span class="built_in">cd</span>.. <span class="comment">#切换到上一层目录</span></span><br><span class="line"><span class="built_in">cd</span>/ <span class="comment">#切换到根目录</span></span><br><span class="line"><span class="built_in">cd</span>~ <span class="comment">#切换到用户主目录</span></span><br><span class="line">ll <span class="comment">#查看目录信息</span></span><br><span class="line"><span class="built_in">touch</span> <span class="comment">#创建文件夹</span></span><br><span class="line"><span class="built_in">tail</span> -f <span class="comment">#动态查看日志</span></span><br><span class="line">tar -zcvf <span class="comment">#打包压缩</span></span><br><span class="line">tar -xvf <span class="comment">#解压缩</span></span><br><span class="line"><span class="built_in">ls</span> -l <span class="comment">#查看某个目录下文件或目录的权限</span></span><br><span class="line">ps -ef/ps -aux <span class="comment">#查看正在运行的进程</span></span><br><span class="line"><span class="built_in">kill</span> -9 进程的pid <span class="comment">#杀死进程</span></span><br><span class="line">netstat -an <span class="comment">#查看当前系统的端口使用情况</span></span><br><span class="line">ifconfig <span class="comment">#查看当前系统的网卡信息</span></span><br><span class="line">shoutdown <span class="comment">#关机</span></span><br><span class="line">reboot <span class="comment">#重启</span></span><br></pre></td></tr></table></figure>
-
+        <p>Nginx的功能：动静分离、反向代理、负载均衡</p>
 <span id="more"></span>
+
+<h5 id="动静分离"><a href="#动静分离" class="headerlink" title="动静分离"></a>动静分离</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">明面上看是将用户需要的静态资源和动态资源分开处理，实际上是将动态的请求和静态的请求给分开了。</span><br><span class="line">Nginx处理静态资源比较快，因此使用Nginx来处理静态页面和静态资源，Tomcat来处理动态请求动态资源</span><br></pre></td></tr></table></figure>
+
+<h5 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">反向代理指的是 代理服务器（例如：nginx）来接受internet上的连接请求，然后将请求转发给内部服务器（例如：Tomcat），并且将从内部服务器上得到的结果返回给internet上请求连接的客户，这时这个代理服务器（Nginx）对外就表现为一个反向代理服务器。</span><br><span class="line">从用户端来看，实际上用户并不知道真正的服务提供者是哪一台服务器，只知道请求了代理服务器，因此这种反向代理的方式又对外隐藏了真实的服务器地址，从一定程度上降低了安全隐患。</span><br></pre></td></tr></table></figure>
+
+<h5 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">有：</span><br><span class="line">轮询的方式（默认）</span><br><span class="line">最少连接的方式（连的最少就将请求发送到这个服务器）</span><br><span class="line">IP_hash（可以解决session的问题，但是会造成负载的不均）</span><br><span class="line">按照相应时间来分配（谁响应时间最短就分配给谁）</span><br><span class="line">Url_hash（按照url的请求经过hash啦分配请求）</span><br></pre></td></tr></table></figure>
+
+<h5 id="nginx-conf文件的内容"><a href="#nginx-conf文件的内容" class="headerlink" title="nginx.conf文件的内容"></a>nginx.conf文件的内容</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">......</span><br><span class="line">    #gzip on;</span><br><span class="line">    #配置负载均衡的服务器列表，weight参数表示权重，权重越高，被分配到的概率越大</span><br><span class="line">    upstream tomcat_server &#123; #代理的服务器地址和权重</span><br><span class="line">        server 192.168.136.20:8080 weight=1;</span><br><span class="line">        server 192.168.136.40:8080 weight=1;</span><br><span class="line">        server 192.168.136.40:8081 weight=1;</span><br><span class="line">    &#125;</span><br><span class="line">    server &#123; # 设置监听的端口和服务的地址</span><br><span class="line">        listen 80;</span><br><span class="line">        server_name www.t2.com;</span><br><span class="line">        charset utf-8;</span><br><span class="line">        #access_log logs/host.access.log main;</span><br><span class="line">        #配置Nginx处理动态页面请求，将 .jsp文件请求转发到Tomcat 服务器处理</span><br><span class="line">        location ~ .*\.jsp$ &#123; # 请求服务器资源的路径</span><br><span class="line">            proxy_pass http://tomcat_server; # 代理请求</span><br><span class="line">#设置后端的Web服务器可以获取远程客户端的真实IP</span><br><span class="line">##设定后端的Web服务器接收到的请求访问的主机名（域名或IP、端口），默认HOST的值为proxy_pass指令设置的主机名。如果反向代理服务器不重写该请求头的话，那么后端真实服务器在处理时会认为所有的请求都来自反向代理服务器，如果后端有防攻击策略的话，那么机器就被封掉了。</span><br><span class="line">            proxy_set_header HOST $host;</span><br><span class="line">##把$remote_addr赋值给X-Real-IP，来获取源IP</span><br><span class="line">            proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">##在nginx 作为代理服务器时，设置的IP列表，会把经过的机器ip，代理机器ip都记录下来</span><br><span class="line">            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        &#125;</span><br><span class="line">        #配置Nginx处理静态图片请求</span><br><span class="line">        location ~ .*\.(gif|jpg|jpeg|png|bmp|swf|css)$ &#123;</span><br><span class="line">            root /usr/local/nginx/html/img;</span><br><span class="line">            expires 10d;</span><br><span class="line">        &#125;</span><br><span class="line">        location / &#123;</span><br><span class="line">            root html;</span><br><span class="line">            index index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">......</span><br><span class="line">    &#125;</span><br><span class="line">......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
     </div>
 
     
@@ -331,7 +334,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/linux/" rel="tag"># linux</a>
+              <a href="/tags/nginx/" rel="tag"># nginx</a>
           </div>
 
         
@@ -340,12 +343,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/4c3bfe5e/" rel="prev" title="chenge-first-blog">
-      <i class="fa fa-chevron-left"></i> chenge-first-blog
+    <a href="/posts/64ffd4a7/" rel="prev" title="网络是怎样连接的阅读笔记">
+      <i class="fa fa-chevron-left"></i> 网络是怎样连接的阅读笔记
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/a1d47c8e/" rel="next" title="Redis相关">
-      Redis相关 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/cba8004/" rel="next" title="多线程相关">
+      多线程相关 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -406,6 +409,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8A%A8%E9%9D%99%E5%88%86%E7%A6%BB"><span class="nav-number">1.</span> <span class="nav-text">动静分离</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">反向代理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="nav-number">3.</span> <span class="nav-text">负载均衡</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#nginx-conf%E6%96%87%E4%BB%B6%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">4.</span> <span class="nav-text">nginx.conf文件的内容</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -536,7 +540,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'BlogComm',
       owner       : 'wzf5251',
       admin       : ['wzf5251'],
-      id          : 'a0f900c764e39a79bbfd993836c079bf',
+      id          : 'fcccc8a6b22667bbc6131f575d4dd184',
       proxy       : 'https://jocular-bavarois-7d3bd6.netlify.app/github_access_token',
         language: 'zh-CN',
       distractionFreeMode: true
