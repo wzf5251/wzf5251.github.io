@@ -1,3 +1,4 @@
+http://example.com/talks/index.html
 http://example.com/posts/48932efb/
 http://example.com/posts/426220f4/
 http://example.com/posts/b74c84c/
